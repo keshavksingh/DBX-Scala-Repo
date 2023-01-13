@@ -1,0 +1,14 @@
+build:
+  no_build: true
+environments:
+  default:
+    workflows:
+      - name: "mvn-dbx-demo-job"
+        new_cluster:
+          spark_version: "11.3.x-scala2.12"
+          node_type_id: "Standard_DS3_v2"
+          num_workers: 2
+        libraries:
+          - jar: "file://target/dbxadbproject-1.0-SNAPSHOT.jar"
+        spark_jar_task:
+          main_class_name: "org.cxdpublish.application.SampleApp"
